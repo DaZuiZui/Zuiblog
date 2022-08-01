@@ -14,7 +14,6 @@
 		<module>openfeign</module>
 		<module>config</module>
 		<module>eureka2</module>
-		<module>eureka1</module>
 		<module>users</module>
 		<module>blog</module>
 	</modules>

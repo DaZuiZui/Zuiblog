@@ -18,13 +18,11 @@
     </properties>
 
     <dependencies>
-
         <!--aop-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-
 
         <!--引入Api-->
         <dependency>
