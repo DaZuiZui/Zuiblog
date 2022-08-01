@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dazuizui.blog.mapper.blogging.BlogingMapper">
+    <!--
+        修改博文详细信息
+    -->
+    <select id="updateArticleDecri">
+        update
+            detailed_article
+        set
+            mdtext = #{article.mdtext},
+            title = #{article.title},
+            privacy = #{article.privacy},
+            technical = #{article.technical},
+            blogfileclass = #{article.blogfileclass},
+            html = #{article.html}
+        where
+            author = #{article.author} and
+            title = #{oldtitle}
+    </select>
+
+
+    <!--
+        修改博文展示信息
+    -->
+    <select id="updateArticle">
+        update
+            article
+        set
+            title = #{article.title},
+            privacy = #{article.privacy},
+            technical = #{article.technical},
+            blogfileclass = #{article.blogfileclass},
+            describes = #{article.describes}
+        where
+            author = #{article.author} and
+            title = #{oldtitle}
+    </select>
+</mapper>
