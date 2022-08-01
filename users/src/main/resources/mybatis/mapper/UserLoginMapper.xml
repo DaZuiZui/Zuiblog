@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dazuizui.users.mapper.login.UserLoginMapper">
+    <select id="selectUserbyUsername" resultType="com.dazuizui.api.pojo.User">
+        SELECT
+            ul.username,
+            ul.`password`,
+            info.role
+        FROM
+            userinformation info
+                LEFT JOIN userlogin ul ON info.username = ul.username
+        WHERE
+            ul.username = #{username}
+    </select>
+</mapper>
