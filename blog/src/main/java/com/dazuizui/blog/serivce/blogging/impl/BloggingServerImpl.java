@@ -65,6 +65,7 @@ public class BloggingServerImpl implements BloggingServer {
         if (title != null && token != null && username != null){
             //Judge whether it is an admin to operation
             if (userInfoTool.DetermineWhetherTheAdministratorIsAnAdministratorByToken(token)) {
+                System.out.println("Asd");
                 //删除mysql中的数据
                 blogingMapper.deleteTheArticle(username,title);
 
