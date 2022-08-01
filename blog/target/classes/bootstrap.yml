@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: blog-config
+      label: master
+      profile: dev
+      uri: http://127.0.0.1:3344

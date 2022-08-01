@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dazuizui.blog.mapper.article.ArticleMapper">
+    <select id="queryArticleById" resultType="com.dazuizui.api.pojo.Article">
+        SELECT *from article a LEFT JOIN detailed_article darticle on a.id = darticle.id where a.id = #{id}
+    </select>
+
+    <!--模糊查询
+        todo
+    -->
+    <select id="queryFuzzyQuery" resultType="com.dazuizui.api.pojo.Article">
+        SELECT
+            id,
+            title,
+            author,
+            describes,
+            technical,
+            NAME
+        FROM
+            article
+        WHERE
+            instr( title, #{title} ) > 0
+    </select>
+
+    <select id="pagingQueryBposts" resultType="com.dazuizui.api.pojo.Article">
+        select
+            id,title,author,describes,technical,name
+        from
+            article
+        where
+                id > (
+                SELECT id from article LIMIT #{start},1)
+            limit 10
+    </select>
+
+    <select id="queryArticleByUsernameAndTitleAndTechnical" resultType="com.dazuizui.api.pojo.Article">
+        SELECT
+            detailed_article.id,
+            detailed_article.title,
+            detailed_article.author,
+            detailed_article.mdtext,
+            detailed_article.privacy,
+            detailed_article.`language`,
+            detailed_article.blogfileclass,
+            detailed_article.creatingTime,
+            detailed_article.html,
+            detailed_article.technical,
+            article.describes
+        FROM
+            detailed_article
+                LEFT JOIN article ON detailed_article.title = article.title
+                AND detailed_article.author = article.author
+                AND detailed_article.technical = article.technical
+        where
+            detailed_article.title = #{title} and
+            detailed_article.author = #{author} and
+            detailed_article.technical = #{technical}
+    </select>
+</mapper>

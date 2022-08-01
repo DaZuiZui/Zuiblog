@@ -1,0 +1,9 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: blog
+
+ribbon:
+  ReadTimeout: 50000
+  ConnectTimeout: 50000
